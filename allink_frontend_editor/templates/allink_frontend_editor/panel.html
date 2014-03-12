@@ -1,0 +1,68 @@
+<div id="frontend-editor-panel">
+    <div class="inner">
+        <button id="live-edit-start">edit</button>
+        <button id="live-edit-stop" style="display: none">stop edit</button>
+        <!-- <button id="live-edit-save">save</button> -->
+    </div>
+    <div class="inner save-progress">
+        <div class="quick-info-content">Änderung wurde gespeichert</div>
+    </div>
+</div>
+
+<div id="updated-warning" style="display: none;">
+    <p>Es gab Änderung im Backend. Laden sie die Seite neu. <a href="">neu laden</a></p>
+</div>
+
+<div id="frontend-editor-lightbox" style="display: none;">
+    <div class="wrapper">
+        <div class="inner">
+            <div class="content">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" type="text/css" href="/static/allink_frontend_editor/stylesheets/style.css">
+<script src="//tinymce.cachefly.net/4.0/tinymce.min.js"></script>
+<script type="text/javascript">
+
+    window.tinymce_config = {
+        plugins: "link, image, paste",
+        selector: "textarea",
+        height: 350,
+        width: 700,
+        menubar: false,
+        toolbar: "formatselect,|,link, unlink,|,undo, redo,|,bullist, numlist,|,image, code",
+        block_formats: "Paragraph=p;Header 1=h1;Header 2=h2;Header 3=h3",
+        paste_auto_cleanup_on_paste: true,
+        paste_word_valid_elements: "",
+        valid_styles: {
+            
+        },
+        image_list: [
+            {% for mediafile in mediafiles %}
+                {title: '{{ mediafile }}', value: '{{ mediafile.get_absolute_url }}'}{% if not forloop.last %},{% endif %}
+            {% endfor %}
+        ],
+        image_list: [
+            {% for mediafile in mediafiles %}
+                {title: '{{ mediafile }}', value: '{{ mediafile.get_absolute_url }}'}{% if not forloop.last %},{% endif %}
+            {% endfor %}
+        ]
+     };
+
+     window.tinymce_inline_config = {
+        selector: "span.tinymce.inline",
+        inline: true,
+        plugins: "link",
+        valid_elements: "h3",
+        toolbar: "formatselect, link, unlink",
+        block_formats: "Paragraph=p;Header 3=h3",
+        menubar: false
+    };
+</script>
+
+<script type="text/javascript" src="/static/allink_frontend_editor/javascript/lib/jquery.min.js"></script>
+<script type="text/javascript" src="/static/allink_frontend_editor/javascript/allink_frontend_editor.js"></script>
+
