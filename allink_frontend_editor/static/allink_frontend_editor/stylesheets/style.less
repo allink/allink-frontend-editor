@@ -9,7 +9,20 @@
         outline: none;
     }
     &:before {
-        content: '';
+        // content: '';
+        // width: 20px;
+        // height: 20px;
+        // position: absolute;
+        // left: -34px;
+        // top: -7px;
+        // background: url(/static/allink_frontend_editor/images/edit_icon.png) no-repeat;
+        // background-position: 4px 4px;
+        // cursor: pointer;
+        // padding: 4px;
+        // border-radius: 4px;
+    }
+
+    .frontend-editor-btn {
         width: 20px;
         height: 20px;
         position: absolute;
@@ -20,11 +33,18 @@
         cursor: pointer;
         padding: 4px;
         border-radius: 4px;
+        &:hover,
+        &:focus {
+            background-color: rgba(0, 0, 0, .05);
+        }
+        &.edit {
+            background-color: #AAA;
+        }
     }
-    &:hover:before,
-    &:focus:before {
-        background-color: rgba(0, 0, 0, .05);
-    }
+}
+
+.frontend-editing-placeholder {
+    color: grey;
 }
 
 .live-edit-richtext-btn {
@@ -56,7 +76,7 @@
     }
     button {
         -webkit-appearance: none;
-        width: 80px;
+        width: 90px;
         background: white;
         border: none;
         border-radius: 4px;
@@ -64,8 +84,12 @@
         text-transform: uppercase;
         cursor: pointer;
         font-family: @font-family;
+        display: block;
         &:hover {
             text-decoration: underline;
+        }
+        & + button {
+            margin-top: 5px;
         }
     }
 }

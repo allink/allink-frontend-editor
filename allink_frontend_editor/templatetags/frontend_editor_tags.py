@@ -5,12 +5,14 @@ register = template.Library()
 
 
 @register.simple_tag(takes_context=True)
-def template_snippet(context, identifier, page):
+def template_snippet(context, identifier, page, editing_type='lightbox'):
     content = page._snippets.get(identifier, '')
+    print content
     if not context['request'].user.is_staff:
         return content
-    return '<span class="frontend-editor-edit lightbox" live-editable-richtext data-identifier=%(identifier)s>%(content)s</span><button href="" btn-data-identifier=%(identifier)s class="live-edit-richtext-btn">edit richtext</button>' % {
+    return '<span class="frontend-editor-edit %(editing_type)s" data-identifier=%(identifier)s><a class="frontend-editor-btn" href="#"></a><span class="frontend-editor-content">%(content)s</span></span>' % {
         'identifier': identifier,
+        'editing_type': editing_type,
         'content': content,
     }
 

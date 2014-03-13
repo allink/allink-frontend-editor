@@ -1,0 +1,37 @@
+<script type="text/javascript">
+
+    window.tinymce_config = {
+        plugins: "link, image, paste",
+        selector: "textarea",
+        height: 350,
+        width: 700,
+        menubar: false,
+        toolbar: "formatselect,|,link, unlink,|,undo, redo,|,bullist, numlist,|,image, code",
+        block_formats: "Paragraph=p;Header 1=h1;Header 2=h2;Header 3=h3",
+        paste_auto_cleanup_on_paste: true,
+        paste_word_valid_elements: "",
+        valid_styles: {
+            
+        },
+        image_list: [
+            {% for mediafile in mediafiles %}
+                {title: '{{ mediafile }}', value: '{{ mediafile.get_absolute_url }}'}{% if not forloop.last %},{% endif %}
+            {% endfor %}
+        ],
+        image_list: [
+            {% for mediafile in mediafiles %}
+                {title: '{{ mediafile }}', value: '{{ mediafile.get_absolute_url }}'}{% if not forloop.last %},{% endif %}
+            {% endfor %}
+        ]
+     };
+
+     window.tinymce_inline_config = {
+        selector: "span.tinymce.inline",
+        inline: true,
+        plugins: "link",
+        valid_elements: "h3",
+        toolbar: "formatselect, link, unlink",
+        block_formats: "Paragraph=p;Header 3=h3",
+        menubar: false
+    };
+</script>
