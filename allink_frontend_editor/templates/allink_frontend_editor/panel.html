@@ -1,12 +1,25 @@
-<div id="frontend-editor-panel">
-    <div class="inner">
-        <button id="live-edit-start">edit</button>
-        <button id="live-edit-stop" style="display: none">stop edit</button>
-        <button id="live-edit-save">save</button>
+<div id="frontend-editor-panel" class="frontend-editor-box">
+    <div class="frontend-editor-inner">
+        <a class="frontend-editor-main-icon frontend-editor-icon-edit frontend-editor-open-panel-btn" href="#"></a>
+        <ul>
+            <li>
+                <button class="btn" id="live-edit-start"><span class="frontend-editor-icon-pencil frontend-editor-icon"></span>Edit</button>
+                <button class="btn" id="live-edit-stop" style="display: none"><span class="frontend-editor-icon-pencil frontend-editor-icon"></span>stop edit</button>
+            </li>
+            <li>
+                <button class="btn" id="live-edit-save"><span class="frontend-editor-icon-floppy frontend-editor-icon"></span>Save changes</button>
+            </li>
+            <li>
+                <a class="btn" href="/admin/" target="_blank" id="live-edit-save"><span class="frontend-editor-icon-cogs frontend-editor-icon"></span>Admin</a>
+            </li>
+            <li>
+                <a class="btn" href="/admin/logout/" id="live-edit-save"><span class="frontend-editor-icon-exit2 frontend-editor-icon"></span>Log out</a>
+            </li>
+        </ul>
     </div>
-    <div class="inner save-progress">
-        <div class="quick-info-content">Änderung wurde gespeichert</div>
-    </div>
+</div>
+<div id="frontend-editor-save-progress" class="frontend-editor-box">
+    <div class="quick-info-content">Änderung wurde gespeichert</div>
 </div>
 
 <div id="updated-warning" style="display: none;">
@@ -23,11 +36,15 @@
     </div>
 </div>
 
+<link rel="stylesheet" type="text/css" href="/static/allink_frontend_editor/icons/style.css">
 <link rel="stylesheet" type="text/css" href="/static/allink_frontend_editor/stylesheets/style.css">
 <script src="//tinymce.cachefly.net/4.0/tinymce.min.js"></script>
 
 {% include "allink_frontend_editor/tinymce_config.html" %}
 
+<script type="text/javascript">
+    window.allink_frontend_editor_page_url = "{% url "admin:page_page_change" feincms_page.pk %}snippets/";
+</script>
+
 <script type="text/javascript" src="/static/allink_frontend_editor/javascript/lib/jquery.min.js"></script>
 <script type="text/javascript" src="/static/allink_frontend_editor/javascript/allink_frontend_editor.js"></script>
-

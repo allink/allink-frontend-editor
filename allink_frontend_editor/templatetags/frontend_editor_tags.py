@@ -10,7 +10,7 @@ def template_snippet(context, identifier, page, editing_type='lightbox'):
     print content
     if not context['request'].user.is_staff:
         return content
-    return '<span class="frontend-editor-edit %(editing_type)s" data-identifier=%(identifier)s><a class="frontend-editor-btn" href="#"></a><span class="frontend-editor-content">%(content)s</span></span>' % {
+    return '<span class="frontend-editor-edit %(editing_type)s" data-identifier=%(identifier)s><a class="frontend-editor-btn" href="#"><span class="frontend-editor-edit-icon"></span></a><span class="frontend-editor-content">%(content)s</span></span>' % {
         'identifier': identifier,
         'editing_type': editing_type,
         'content': content,

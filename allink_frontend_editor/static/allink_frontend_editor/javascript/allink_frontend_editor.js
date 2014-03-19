@@ -17,6 +17,8 @@
             this.inline_edit_btn = this.inline_edit.find('.frontend-editor-btn');
             this.richtext_edit = $('.frontend-editor-edit.lightbox');
 
+            this.open_panel_btn = this.$panel.find('.frontend-editor-open-panel-btn');
+
             this.active_anchor = null;
 
             this.save_btn = $('#live-edit-save');
@@ -83,6 +85,21 @@
                     self.saveData($this.parent());
                 }
             });
+
+            this.open_panel_btn.click(function(event) {
+                event.preventDefault();
+                var $this = $(this);
+                if(!self.is_out) {
+                    if(!self.panel_height)
+                        self.panel_height = self.$panel.find('.frontend-editor-inner').outerHeight();
+                    self.$panel.height(self.panel_height).css('right', 0).addClass('out');
+                    self.is_out = true;
+                }
+                else {
+                    self.$panel.height(60).css('right', -110).removeClass('out');
+                    self.is_out = false;
+                }
+            });
         },
         startEditing: function() {
             this.inline_edit.addClass('marked-editable');
@@ -131,7 +148,7 @@
                                    "csrfmiddlewaretoken=" + getCookie('csrftoken');
 
             $.ajax({
-                url: '/admin/page/page/1/snippets/' + identifier + '/',
+                url: window.allink_frontend_editor_page_url + identifier + '/',
                 method: 'POST',
                 data: inline_text_list
             });
@@ -140,7 +157,7 @@
         // display small window to show that data is saving
         showQuickInfo: function(text) {
             if(!this.save_progress_view)
-                this.save_progress_view = this.$panel.find('.save-progress');
+                this.save_progress_view = $('#frontend-editor-save-progress');
 
             if(!this.quick_info_content)
                 this.quick_info_content = this.$panel.find('.quick-info-content');
@@ -161,7 +178,7 @@
         openRichtextInLightbox: function(identifier) {
             var self = this;
             $.ajax({
-                url: '/admin/page/page/1/snippets/' + identifier + '/',
+                url: window.allink_frontend_editor_page_url + identifier + '/',
                 success: function(result) {
                     self.lightbox_container.find('.content').html(result);
                     self.tinymce = tinymce.init(window.tinymce_config);
@@ -174,7 +191,7 @@
                         self.current_richtext.html(tinymce.activeEditor.getContent());
 
                         data += '&data=' + tinymce.activeEditor.getContent();
-                        $.post('/admin/page/page/1/snippets/' + identifier + '/', data,
+                        $.post(window.allink_frontend_editor_page_url + identifier + '/', data,
                             function(result) {
                                 self.showQuickInfo(result);
                             });

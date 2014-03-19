@@ -1,4 +1,17 @@
-@font-family: Arial;
+@font-family: Helvetica;
+@main-color: #28d59e;
+@lighter-color: #4affc6;
+@hover-color: fade(@lighter-color, 70%);
+@inner-padding: 17px;
+
+.transition(@prop, @duration, @ease:linear, @delay:0s) {
+    -webkit-transition: @prop @duration @ease @delay;
+    -moz-transition: @prop @duration @ease @delay;
+    -ms-transition: @prop @duration @ease @delay;
+    -o-transition: @prop @duration @ease @delay;
+    transition: @prop @duration @ease @delay;
+}
+
 
 .marked-editable {
     position: relative;
@@ -8,37 +21,40 @@
         cursor: text;
         outline: none;
     }
-    &:before {
-        // content: '';
-        // width: 20px;
-        // height: 20px;
-        // position: absolute;
-        // left: -34px;
-        // top: -7px;
-        // background: url(/static/allink_frontend_editor/images/edit_icon.png) no-repeat;
-        // background-position: 4px 4px;
-        // cursor: pointer;
-        // padding: 4px;
-        // border-radius: 4px;
-    }
-
     .frontend-editor-btn {
         width: 20px;
         height: 20px;
         position: absolute;
         left: -34px;
         top: -7px;
-        background: url(/static/allink_frontend_editor/images/edit_icon.png) no-repeat;
+        background-color: @main-color;
         background-position: 4px 4px;
         cursor: pointer;
-        padding: 4px;
+        padding: 6px 2px 2px 6px;
         border-radius: 4px;
-        &:hover,
-        &:focus {
-            background-color: rgba(0, 0, 0, .05);
-        }
+        -moz-box-shadow: 0 0 8px rgba(0,0,0,.5);
+        -webkit-box-shadow: 0 0 8px rgba(0,0,0,.5);
+        box-shadow: 0 0 8px rgba(0,0,0,.5);
+        text-decoration: none;
         &.edit {
-            background-color: #AAA;
+            z-index: 10000;
+            .frontend-editor-edit-icon:before {
+                content: "\e603";
+            }
+        }
+    }
+    .frontend-editor-edit-icon {
+        font-family: 'icomoon';
+        speak: none;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-transform: none;
+        line-height: 1;
+        color: black;
+        &:before {
+            text-decoration: none;
+            content: "\e604";
         }
     }
 }
@@ -51,47 +67,129 @@
     display: none;
 }
 
+.frontend-editor-box {
+    font-family: @font-family;
+    font-size: 14px;
+    color: black;
+    background-color: @main-color;
+    -moz-border-top-left-radius: 10px;
+    -webkit-border-top-left-radius: 10px;
+    border-top-left-radius: 10px;
+    -moz-border-bottom-left-radius: 10px;
+    -webkit-border-bottom-left-radius: 10px;
+    border-bottom-left-radius: 10px;        
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    -moz-box-shadow: 0 0 8px rgba(0,0,0,.5);
+    -webkit-box-shadow: 0 0 8px rgba(0,0,0,.5);
+    box-shadow: 0 0 8px rgba(0,0,0,.5);
+}
+
 #frontend-editor-panel {
     position: fixed;
-    right: 0;
-    top: 50%;
-    bottom: 20px;
-    font-family: @font-family;
-    font-size: 13px;
-    .save-progress {
-        display: none;
-    }
-    .inner {
-        background: #FDC205;
-        padding: 10px;
-        border-top-left-radius: 10px;
-        border-bottom-left-radius: 10px;
-        text-align: center;
-        float: right;
-        clear: right;
-        color: white;
-        & + .inner {
-            margin-top: 10px;
+    top: 200px;
+    right: -110px;
+    width: 200px;
+    height: 60px;
+    overflow: hidden;
+    -webkit-transition: height 500ms ease, right 500ms ease;
+       -moz-transition: height 500ms ease, right 500ms ease;
+        -ms-transition: height 500ms ease, right 500ms ease;
+         -o-transition: height 500ms ease, right 500ms ease;
+            transition: height 500ms ease, right 500ms ease;
+    &.out {
+        li {
+            opacity: 1;
+            .transition(opacity, 600ms, linear, 200ms);
         }
     }
-    button {
+    .frontend-editor-inner {
+        box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        width: 100%;
+        padding: 10px @inner-padding @inner-padding;
+    }
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
+    li {
+        opacity: 0;
+        .transition(opacity, 200ms, linear, 0);
+    }
+    li + li {
+        margin-top: 10px;
+    }
+    .btn {
         -webkit-appearance: none;
-        width: 90px;
-        background: white;
+        font-family: @font-family;
+        font-weight: bold;
+        font-size: 14px;
+        color: black;
+        width: 100%;
+        background: @lighter-color;
         border: none;
         border-radius: 4px;
-        padding: 5px 8px;
-        text-transform: uppercase;
+        padding: 0 8px;
+        height: 40px;
+        line-height: 40px;
         cursor: pointer;
-        font-family: @font-family;
         display: block;
+        text-transform: none;
+        position: relative;
+        text-decoration: none;
+        box-sizing: border-box;
+        -webkit-box-sizing: border-box;
         &:hover {
-            text-decoration: underline;
+            background-color: fade(@lighter-color, 70%);
         }
-        & + button {
-            margin-top: 5px;
+        &:focus {
+            outline: none;
         }
     }
+    .frontend-editor-icon {
+        position: absolute;
+        left: 9px;
+        top: 10px;
+        font-size: 19px;
+    }
+    .frontend-editor-icon-floppy {
+        font-size: 17px;
+        top: 11px;
+    }
+    .frontend-editor-main-icon {
+        font-size: 46px;
+        color: @lighter-color;
+        margin: 0 0 10px 0;
+        text-decoration: none;
+        display: inline-block;
+        &:hover {
+            color: @hover-color;
+        }
+    }
+    .frontend-editor-close-icon {
+        position: absolute;
+        right: @inner-padding;
+        top: @inner-padding;
+        color: black;
+        font-size: 14px;
+        text-decoration: none;
+        &:hover {
+            color: @hover-color;
+        }
+    }
+}
+
+#frontend-editor-save-progress {
+    display: none;
+    padding: @inner-padding;
+    background-color: @main-color;
+    top: 15px;
+    right: 0;
+    position: fixed;
 }
 
 #updated-warning {

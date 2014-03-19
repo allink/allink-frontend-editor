@@ -7,848 +7,41 @@
   cursor: text;
   outline: none;
 }
-.marked-editable:hover:before,
-.marked-editable:focus:before {
-  background-color: rgba(0, 0, 0, 0.05);
-}
 .marked-editable .frontend-editor-btn {
   width: 20px;
   height: 20px;
   position: absolute;
   left: -34px;
   top: -7px;
-  background: url(/static/allink_frontend_editor/images/edit_icon.png) no-repeat;
+  background-color: #28d59e;
   background-position: 4px 4px;
   cursor: pointer;
-  padding: 4px;
+  padding: 6px 2px 2px 6px;
   border-radius: 4px;
-}
-.live-edit-richtext-btn {
-  display: none;
-}
-#frontend-editor-panel {
-  position: fixed;
-  right: 0;
-  top: 50%;
-  bottom: 20px;
-  font-family: Arial;
-  font-size: 13px;
-}
-#frontend-editor-panel .save-progress {
-  display: none;
-}
-#frontend-editor-panel .inner {
-  background: #FDC205;
-  padding: 10px;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-  text-align: center;
-  float: right;
-  clear: right;
-  color: white;
-}
-#frontend-editor-panel .inner + .inner {
-  margin-top: 10px;
-}
-#frontend-editor-panel button {
-  -webkit-appearance: none;
-  width: 80px;
-  background: white;
-  border: none;
-  border-radius: 4px;
-  padding: 5px 8px;
-  text-transform: uppercase;
-  cursor: pointer;
-  font-family: Arial;
-}
-#frontend-editor-panel button:hover {
-  text-decoration: underline;
-}
-#updated-warning {
-  background: #ffff00;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  left: 0;
-  padding: 10px;
-}
-#frontend-editor-lightbox {
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  position: fixed;
-  background: rgba(0, 0, 0, 0.5);
-}
-#frontend-editor-lightbox > .wrapper {
-  height: 100%;
-  margin: 0 auto;
-  display: table;
-}
-#frontend-editor-lightbox > .wrapper > .inner {
-  margin: auto 0;
-  display: table-cell;
-  font-size: 100%;
-  vertical-align: middle;
-}
-#frontend-editor-lightbox > .wrapper > .inner > .content {
-  background-color: white;
-  padding: 20px;
-  border-radius: 10px;
-}
-.marked-editable {
-  position: relative;
-  cursor: pointer;
-  word-wrap: initial;
-}
-.marked-editable:focus {
-  cursor: text;
-  outline: none;
-}
-.marked-editable .frontend-editor-btn {
-  width: 20px;
-  height: 20px;
-  position: absolute;
-  left: -34px;
-  top: -7px;
-  background: url(/static/allink_frontend_editor/images/edit_icon.png) no-repeat;
-  background-position: 4px 4px;
-  cursor: pointer;
-  padding: 4px;
-  border-radius: 4px;
-}
-.marked-editable .frontend-editor-btn:hover,
-.marked-editable .frontend-editor-btn:focus {
-  background-color: rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+  text-decoration: none;
 }
 .marked-editable .frontend-editor-btn.edit {
-  background-color: #555;
-}
-.live-edit-richtext-btn {
-  display: none;
-}
-#frontend-editor-panel {
-  position: fixed;
-  right: 0;
-  top: 50%;
-  bottom: 20px;
-  font-family: Arial;
-  font-size: 13px;
-}
-#frontend-editor-panel .save-progress {
-  display: none;
-}
-#frontend-editor-panel .inner {
-  background: #FDC205;
-  padding: 10px;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-  text-align: center;
-  float: right;
-  clear: right;
-  color: white;
-}
-#frontend-editor-panel .inner + .inner {
-  margin-top: 10px;
-}
-#frontend-editor-panel button {
-  -webkit-appearance: none;
-  width: 80px;
-  background: white;
-  border: none;
-  border-radius: 4px;
-  padding: 5px 8px;
-  text-transform: uppercase;
-  cursor: pointer;
-  font-family: Arial;
-}
-#frontend-editor-panel button:hover {
-  text-decoration: underline;
-}
-#updated-warning {
-  background: #ffff00;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  left: 0;
-  padding: 10px;
-}
-#frontend-editor-lightbox {
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  position: fixed;
-  background: rgba(0, 0, 0, 0.5);
-}
-#frontend-editor-lightbox > .wrapper {
-  height: 100%;
-  margin: 0 auto;
-  display: table;
-}
-#frontend-editor-lightbox > .wrapper > .inner {
-  margin: auto 0;
-  display: table-cell;
-  font-size: 100%;
-  vertical-align: middle;
-}
-#frontend-editor-lightbox > .wrapper > .inner > .content {
-  background-color: white;
-  padding: 20px;
-  border-radius: 10px;
-}
-.marked-editable {
-  position: relative;
-  cursor: pointer;
-  word-wrap: initial;
-}
-.marked-editable:focus {
-  cursor: text;
-  outline: none;
-}
-.marked-editable .frontend-editor-btn {
-  width: 20px;
-  height: 20px;
-  position: absolute;
-  left: -34px;
-  top: -7px;
-  background: url(/static/allink_frontend_editor/images/edit_icon.png) no-repeat;
-  background-position: 4px 4px;
-  cursor: pointer;
-  padding: 4px;
-  border-radius: 4px;
-}
-.marked-editable .frontend-editor-btn:hover,
-.marked-editable .frontend-editor-btn:focus {
-  background-color: rgba(0, 0, 0, 0.05);
-}
-.marked-editable .frontend-editor-btn.edit {
-  background-color: #AAA;
-}
-.live-edit-richtext-btn {
-  display: none;
-}
-#frontend-editor-panel {
-  position: fixed;
-  right: 0;
-  top: 50%;
-  bottom: 20px;
-  font-family: Arial;
-  font-size: 13px;
-}
-#frontend-editor-panel .save-progress {
-  display: none;
-}
-#frontend-editor-panel .inner {
-  background: #FDC205;
-  padding: 10px;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-  text-align: center;
-  float: right;
-  clear: right;
-  color: white;
-}
-#frontend-editor-panel .inner + .inner {
-  margin-top: 10px;
-}
-#frontend-editor-panel button {
-  -webkit-appearance: none;
-  width: 80px;
-  background: white;
-  border: none;
-  border-radius: 4px;
-  padding: 5px 8px;
-  text-transform: uppercase;
-  cursor: pointer;
-  font-family: Arial;
-}
-#frontend-editor-panel button:hover {
-  text-decoration: underline;
-}
-#updated-warning {
-  background: #ffff00;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  left: 0;
-  padding: 10px;
-}
-#frontend-editor-lightbox {
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  position: fixed;
-  background: rgba(0, 0, 0, 0.5);
-}
-#frontend-editor-lightbox > .wrapper {
-  height: 100%;
-  margin: 0 auto;
-  display: table;
-}
-#frontend-editor-lightbox > .wrapper > .inner {
-  margin: auto 0;
-  display: table-cell;
-  font-size: 100%;
-  vertical-align: middle;
-}
-#frontend-editor-lightbox > .wrapper > .inner > .content {
-  background-color: white;
-  padding: 20px;
-  border-radius: 10px;
-}
-.marked-editable {
-  position: relative;
-  cursor: pointer;
-  word-wrap: initial;
-}
-.marked-editable:focus {
-  cursor: text;
-  outline: none;
-}
-.marked-editable .frontend-editor-btn {
-  width: 20px;
-  height: 20px;
-  position: absolute;
-  left: -34px;
-  top: -7px;
-  background: url(/static/allink_frontend_editor/images/edit_icon.png) no-repeat;
-  background-position: 4px 4px;
-  cursor: pointer;
-  padding: 4px;
-  border-radius: 4px;
-}
-.marked-editable .frontend-editor-btn:hover,
-.marked-editable .frontend-editor-btn:focus {
-  background-color: rgba(0, 0, 0, 0.05);
-}
-.marked-editable .frontend-editor-btn.edit {
-  background-color: #AAA;
-}
-.live-edit-richtext-btn {
-  display: none;
-}
-#frontend-editor-panel {
-  position: fixed;
-  right: 0;
-  top: 50%;
-  bottom: 20px;
-  font-family: Arial;
-  font-size: 13px;
-}
-#frontend-editor-panel .save-progress {
-  display: none;
-}
-#frontend-editor-panel .inner {
-  background: #FDC205;
-  padding: 10px;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-  text-align: center;
-  float: right;
-  clear: right;
-  color: white;
-}
-#frontend-editor-panel .inner + .inner {
-  margin-top: 10px;
-}
-#frontend-editor-panel button {
-  -webkit-appearance: none;
-  width: 90px;
-  background: white;
-  border: none;
-  border-radius: 4px;
-  padding: 5px 8px;
-  text-transform: uppercase;
-  cursor: pointer;
-  font-family: Arial;
-}
-#frontend-editor-panel button:hover {
-  text-decoration: underline;
-}
-#updated-warning {
-  background: #ffff00;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  left: 0;
-  padding: 10px;
-}
-#frontend-editor-lightbox {
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  position: fixed;
-  background: rgba(0, 0, 0, 0.5);
-}
-#frontend-editor-lightbox > .wrapper {
-  height: 100%;
-  margin: 0 auto;
-  display: table;
-}
-#frontend-editor-lightbox > .wrapper > .inner {
-  margin: auto 0;
-  display: table-cell;
-  font-size: 100%;
-  vertical-align: middle;
-}
-#frontend-editor-lightbox > .wrapper > .inner > .content {
-  background-color: white;
-  padding: 20px;
-  border-radius: 10px;
-}
-.marked-editable {
-  position: relative;
-  cursor: pointer;
-  word-wrap: initial;
-}
-.marked-editable:focus {
-  cursor: text;
-  outline: none;
-}
-.marked-editable .frontend-editor-btn {
-  width: 20px;
-  height: 20px;
-  position: absolute;
-  left: -34px;
-  top: -7px;
-  background: url(/static/allink_frontend_editor/images/edit_icon.png) no-repeat;
-  background-position: 4px 4px;
-  cursor: pointer;
-  padding: 4px;
-  border-radius: 4px;
-}
-.marked-editable .frontend-editor-btn:hover,
-.marked-editable .frontend-editor-btn:focus {
-  background-color: rgba(0, 0, 0, 0.05);
-}
-.marked-editable .frontend-editor-btn.edit {
-  background-color: #AAA;
-}
-.live-edit-richtext-btn {
-  display: none;
-}
-#frontend-editor-panel {
-  position: fixed;
-  right: 0;
-  top: 50%;
-  bottom: 20px;
-  font-family: Arial;
-  font-size: 13px;
-}
-#frontend-editor-panel .save-progress {
-  display: none;
-}
-#frontend-editor-panel .inner {
-  background: #FDC205;
-  padding: 10px;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-  text-align: center;
-  float: right;
-  clear: right;
-  color: white;
-}
-#frontend-editor-panel .inner + .inner {
-  margin-top: 10px;
-}
-#frontend-editor-panel button {
-  -webkit-appearance: none;
-  width: 90px;
-  background: white;
-  border: none;
-  border-radius: 4px;
-  padding: 5px 8px;
-  text-transform: uppercase;
-  cursor: pointer;
-  font-family: Arial;
-  display: block;
-}
-#frontend-editor-panel button:hover {
-  text-decoration: underline;
-}
-#updated-warning {
-  background: #ffff00;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  left: 0;
-  padding: 10px;
-}
-#frontend-editor-lightbox {
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  position: fixed;
-  background: rgba(0, 0, 0, 0.5);
-}
-#frontend-editor-lightbox > .wrapper {
-  height: 100%;
-  margin: 0 auto;
-  display: table;
-}
-#frontend-editor-lightbox > .wrapper > .inner {
-  margin: auto 0;
-  display: table-cell;
-  font-size: 100%;
-  vertical-align: middle;
-}
-#frontend-editor-lightbox > .wrapper > .inner > .content {
-  background-color: white;
-  padding: 20px;
-  border-radius: 10px;
-}
-.marked-editable {
-  position: relative;
-  cursor: pointer;
-  word-wrap: initial;
-}
-.marked-editable:focus {
-  cursor: text;
-  outline: none;
-}
-.marked-editable .frontend-editor-btn {
-  width: 20px;
-  height: 20px;
-  position: absolute;
-  left: -34px;
-  top: -7px;
-  background: url(/static/allink_frontend_editor/images/edit_icon.png) no-repeat;
-  background-position: 4px 4px;
-  cursor: pointer;
-  padding: 4px;
-  border-radius: 4px;
-}
-.marked-editable .frontend-editor-btn:hover,
-.marked-editable .frontend-editor-btn:focus {
-  background-color: rgba(0, 0, 0, 0.05);
-}
-.marked-editable .frontend-editor-btn.edit {
-  background-color: #AAA;
-}
-.live-edit-richtext-btn {
-  display: none;
-}
-#frontend-editor-panel {
-  position: fixed;
-  right: 0;
-  top: 50%;
-  bottom: 20px;
-  font-family: Arial;
-  font-size: 13px;
-}
-#frontend-editor-panel .save-progress {
-  display: none;
-}
-#frontend-editor-panel .inner {
-  background: #FDC205;
-  padding: 10px;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-  text-align: center;
-  float: right;
-  clear: right;
-  color: white;
-}
-#frontend-editor-panel .inner + .inner {
-  margin-top: 10px;
-}
-#frontend-editor-panel button {
-  -webkit-appearance: none;
-  width: 90px;
-  background: white;
-  border: none;
-  border-radius: 4px;
-  padding: 5px 8px;
-  text-transform: uppercase;
-  cursor: pointer;
-  font-family: Arial;
-  display: block;
-}
-#frontend-editor-panel button:hover {
-  text-decoration: underline;
-}
-#frontend-editor-panel button + button {
-  margin-top: 5px;
-}
-#updated-warning {
-  background: #ffff00;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  left: 0;
-  padding: 10px;
-}
-#frontend-editor-lightbox {
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  position: fixed;
-  background: rgba(0, 0, 0, 0.5);
-}
-#frontend-editor-lightbox > .wrapper {
-  height: 100%;
-  margin: 0 auto;
-  display: table;
-}
-#frontend-editor-lightbox > .wrapper > .inner {
-  margin: auto 0;
-  display: table-cell;
-  font-size: 100%;
-  vertical-align: middle;
-}
-#frontend-editor-lightbox > .wrapper > .inner > .content {
-  background-color: white;
-  padding: 20px;
-  border-radius: 10px;
-}
-.marked-editable {
-  position: relative;
-  cursor: pointer;
-  word-wrap: initial;
-}
-.marked-editable:focus {
-  cursor: text;
-  outline: none;
-}
-.marked-editable .frontend-editor-btn {
-  width: 20px;
-  height: 20px;
-  position: absolute;
-  left: -34px;
-  top: -7px;
-  background: url(/static/allink_frontend_editor/images/edit_icon.png) no-repeat;
-  background-position: 4px 4px;
-  cursor: pointer;
-  padding: 4px;
-  border-radius: 4px;
-}
-.marked-editable .frontend-editor-btn:hover,
-.marked-editable .frontend-editor-btn:focus {
-  background-color: rgba(0, 0, 0, 0.05);
-}
-.marked-editable .frontend-editor-btn.edit {
-  background-color: #AAA;
-}
-.live-edit-richtext-btn {
-  display: none;
-}
-.frontend-editor-content .empty:before {
-  content: "empty";
-}
-#frontend-editor-panel {
-  position: fixed;
-  right: 0;
-  top: 50%;
-  bottom: 20px;
-  font-family: Arial;
-  font-size: 13px;
-}
-#frontend-editor-panel .save-progress {
-  display: none;
-}
-#frontend-editor-panel .inner {
-  background: #FDC205;
-  padding: 10px;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-  text-align: center;
-  float: right;
-  clear: right;
-  color: white;
-}
-#frontend-editor-panel .inner + .inner {
-  margin-top: 10px;
-}
-#frontend-editor-panel button {
-  -webkit-appearance: none;
-  width: 90px;
-  background: white;
-  border: none;
-  border-radius: 4px;
-  padding: 5px 8px;
-  text-transform: uppercase;
-  cursor: pointer;
-  font-family: Arial;
-  display: block;
-}
-#frontend-editor-panel button:hover {
-  text-decoration: underline;
-}
-#frontend-editor-panel button + button {
-  margin-top: 5px;
-}
-#updated-warning {
-  background: #ffff00;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  left: 0;
-  padding: 10px;
-}
-#frontend-editor-lightbox {
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  position: fixed;
-  background: rgba(0, 0, 0, 0.5);
-}
-#frontend-editor-lightbox > .wrapper {
-  height: 100%;
-  margin: 0 auto;
-  display: table;
-}
-#frontend-editor-lightbox > .wrapper > .inner {
-  margin: auto 0;
-  display: table-cell;
-  font-size: 100%;
-  vertical-align: middle;
-}
-#frontend-editor-lightbox > .wrapper > .inner > .content {
-  background-color: white;
-  padding: 20px;
-  border-radius: 10px;
-}
-.marked-editable {
-  position: relative;
-  cursor: pointer;
-  word-wrap: initial;
-}
-.marked-editable:focus {
-  cursor: text;
-  outline: none;
-}
-.marked-editable .frontend-editor-btn {
-  width: 20px;
-  height: 20px;
-  position: absolute;
-  left: -34px;
-  top: -7px;
-  background: url(/static/allink_frontend_editor/images/edit_icon.png) no-repeat;
-  background-position: 4px 4px;
-  cursor: pointer;
-  padding: 4px;
-  border-radius: 4px;
-}
-.marked-editable .frontend-editor-btn:hover,
-.marked-editable .frontend-editor-btn:focus {
-  background-color: rgba(0, 0, 0, 0.05);
-}
-.marked-editable .frontend-editor-btn.edit {
-  background-color: #AAA;
-}
-.live-edit-richtext-btn {
-  display: none;
-}
-.frontend-editor-content .empty {
-  content: "empty";
-}
-#frontend-editor-panel {
-  position: fixed;
-  right: 0;
-  top: 50%;
-  bottom: 20px;
-  font-family: Arial;
-  font-size: 13px;
-}
-#frontend-editor-panel .save-progress {
-  display: none;
-}
-#frontend-editor-panel .inner {
-  background: #FDC205;
-  padding: 10px;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-  text-align: center;
-  float: right;
-  clear: right;
-  color: white;
-}
-#frontend-editor-panel .inner + .inner {
-  margin-top: 10px;
-}
-#frontend-editor-panel button {
-  -webkit-appearance: none;
-  width: 90px;
-  background: white;
-  border: none;
-  border-radius: 4px;
-  padding: 5px 8px;
-  text-transform: uppercase;
-  cursor: pointer;
-  font-family: Arial;
-  display: block;
-}
-#frontend-editor-panel button:hover {
-  text-decoration: underline;
-}
-#frontend-editor-panel button + button {
-  margin-top: 5px;
-}
-#updated-warning {
-  background: #ffff00;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  left: 0;
-  padding: 10px;
-}
-#frontend-editor-lightbox {
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  position: fixed;
-  background: rgba(0, 0, 0, 0.5);
-}
-#frontend-editor-lightbox > .wrapper {
-  height: 100%;
-  margin: 0 auto;
-  display: table;
-}
-#frontend-editor-lightbox > .wrapper > .inner {
-  margin: auto 0;
-  display: table-cell;
-  font-size: 100%;
-  vertical-align: middle;
-}
-#frontend-editor-lightbox > .wrapper > .inner > .content {
-  background-color: white;
-  padding: 20px;
-  border-radius: 10px;
-}
-.marked-editable {
-  position: relative;
-  cursor: pointer;
-  word-wrap: initial;
-}
-.marked-editable:focus {
-  cursor: text;
-  outline: none;
-}
-.marked-editable .frontend-editor-btn {
-  width: 20px;
-  height: 20px;
-  position: absolute;
-  left: -34px;
-  top: -7px;
-  background: url(/static/allink_frontend_editor/images/edit_icon.png) no-repeat;
-  background-position: 4px 4px;
-  cursor: pointer;
-  padding: 4px;
-  border-radius: 4px;
-}
-.marked-editable .frontend-editor-btn:hover,
-.marked-editable .frontend-editor-btn:focus {
-  background-color: rgba(0, 0, 0, 0.05);
-}
-.marked-editable .frontend-editor-btn.edit {
-  background-color: #AAA;
+  z-index: 10000;
+}
+.marked-editable .frontend-editor-btn.edit .frontend-editor-edit-icon:before {
+  content: "\e603";
+}
+.marked-editable .frontend-editor-edit-icon {
+  font-family: 'icomoon';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  color: black;
+}
+.marked-editable .frontend-editor-edit-icon:before {
+  text-decoration: none;
+  content: "\e604";
 }
 .frontend-editing-placeholder {
   color: grey;
@@ -856,47 +49,133 @@
 .live-edit-richtext-btn {
   display: none;
 }
+.frontend-editor-box {
+  font-family: Helvetica;
+  font-size: 14px;
+  color: black;
+  background-color: #28d59e;
+  -moz-border-top-left-radius: 10px;
+  -webkit-border-top-left-radius: 10px;
+  border-top-left-radius: 10px;
+  -moz-border-bottom-left-radius: 10px;
+  -webkit-border-bottom-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  -moz-box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+}
 #frontend-editor-panel {
   position: fixed;
-  right: 0;
-  top: 50%;
-  bottom: 20px;
-  font-family: Arial;
-  font-size: 13px;
+  top: 200px;
+  right: -110px;
+  width: 200px;
+  height: 60px;
+  overflow: hidden;
+  -webkit-transition: height 500ms ease, right 500ms ease;
+  -moz-transition: height 500ms ease, right 500ms ease;
+  -ms-transition: height 500ms ease, right 500ms ease;
+  -o-transition: height 500ms ease, right 500ms ease;
+  transition: height 500ms ease, right 500ms ease;
 }
-#frontend-editor-panel .save-progress {
-  display: none;
+#frontend-editor-panel.out li {
+  opacity: 1;
+  -webkit-transition: opacity 600ms linear 200ms;
+  -moz-transition: opacity 600ms linear 200ms;
+  -ms-transition: opacity 600ms linear 200ms;
+  -o-transition: opacity 600ms linear 200ms;
+  transition: opacity 600ms linear 200ms;
 }
-#frontend-editor-panel .inner {
-  background: #FDC205;
-  padding: 10px;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
+#frontend-editor-panel .frontend-editor-inner {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  width: 100%;
+  padding: 10px 17px 17px;
+}
+#frontend-editor-panel ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
   text-align: center;
-  float: right;
-  clear: right;
-  color: white;
 }
-#frontend-editor-panel .inner + .inner {
+#frontend-editor-panel li {
+  opacity: 0;
+  -webkit-transition: opacity 200ms linear 0;
+  -moz-transition: opacity 200ms linear 0;
+  -ms-transition: opacity 200ms linear 0;
+  -o-transition: opacity 200ms linear 0;
+  transition: opacity 200ms linear 0;
+}
+#frontend-editor-panel li + li {
   margin-top: 10px;
 }
-#frontend-editor-panel button {
+#frontend-editor-panel .btn {
   -webkit-appearance: none;
-  width: 90px;
-  background: white;
+  font-family: Helvetica;
+  font-weight: bold;
+  font-size: 14px;
+  color: black;
+  width: 100%;
+  background: #4affc6;
   border: none;
   border-radius: 4px;
-  padding: 5px 8px;
-  text-transform: uppercase;
+  padding: 0 8px;
+  height: 40px;
+  line-height: 40px;
   cursor: pointer;
-  font-family: Arial;
   display: block;
+  text-transform: none;
+  position: relative;
+  text-decoration: none;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
 }
-#frontend-editor-panel button:hover {
-  text-decoration: underline;
+#frontend-editor-panel .btn:hover {
+  background-color: rgba(74, 255, 198, 0.7);
 }
-#frontend-editor-panel button + button {
-  margin-top: 5px;
+#frontend-editor-panel .btn:focus {
+  outline: none;
+}
+#frontend-editor-panel .frontend-editor-icon {
+  position: absolute;
+  left: 9px;
+  top: 10px;
+  font-size: 19px;
+}
+#frontend-editor-panel .frontend-editor-icon-floppy {
+  font-size: 17px;
+  top: 11px;
+}
+#frontend-editor-panel .frontend-editor-main-icon {
+  font-size: 46px;
+  color: #4affc6;
+  margin: 0 0 10px 0;
+  text-decoration: none;
+  display: inline-block;
+}
+#frontend-editor-panel .frontend-editor-main-icon:hover {
+  color: rgba(74, 255, 198, 0.7);
+}
+#frontend-editor-panel .frontend-editor-close-icon {
+  position: absolute;
+  right: 17px;
+  top: 17px;
+  color: black;
+  font-size: 14px;
+  text-decoration: none;
+}
+#frontend-editor-panel .frontend-editor-close-icon:hover {
+  color: rgba(74, 255, 198, 0.7);
+}
+#frontend-editor-save-progress {
+  display: none;
+  padding: 17px;
+  background-color: #28d59e;
+  top: 15px;
+  right: 0;
+  position: fixed;
 }
 #updated-warning {
   background: #ffff00;
