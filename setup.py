@@ -10,11 +10,12 @@ setup(
     long_description=open(os.path.join(os.path.dirname(__file__), 'README.rst')).read(),
     author='allink GmbH',
     author_email='itcrowd@allink.ch',
-    url='http://github.com/allink/allink_frontend_editor/',
+    url='http://github.com/allink/allink-frontend-editor/',
     license='BSD License',
     platforms=['OS Independent'],
     packages=[
         'allink_frontend_editor',
+        'allink_frontend_editor.page_extensions',
         'allink_frontend_editor.templatetags',
     ],
     classifiers=[
