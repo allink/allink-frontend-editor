@@ -4,3 +4,8 @@ include README.rst
 recursive-include allink_frontend_editor/templates *.html
 recursive-include allink_frontend_editor/static *.js
 recursive-include allink_frontend_editor/static *.css
+recursive-include allink_frontend_editor/static *.eot
+recursive-include allink_frontend_editor/static *.svg
+recursive-include allink_frontend_editor/static *.ttf
+recursive-include allink_frontend_editor/static *.woff
+recursive-include allink_frontend_editor/static *.png
