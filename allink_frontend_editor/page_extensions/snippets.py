@@ -20,6 +20,8 @@ class Extension(extensions.Extension):
         modeladmin_class = type(modeladmin)
 
         def snippets_view(inner_self, request, object_id, identifier):
+            if not request.user.has_module_perms('page'):
+                return HttpResponse('Unauthorized', status=401)
             obj = inner_self.get_object(request, unquote(object_id))
             if request.method == 'POST':
                 form = SnippetForm(request.POST, page=obj, identifier=identifier)
