@@ -2,6 +2,5 @@ include AUTHORS
 include LICENSE
 include README.rst
 recursive-include allink_frontend_editor/templates *.html
-recursive-include allink_frontend_editor/locale *.po
-recursive-include allink_frontend_editor/locale *.mo
 recursive-include allink_frontend_editor/static *.js
+recursive-include allink_frontend_editor/static *.css
