@@ -1,5 +1,5 @@
 @font-face {
-	font-family: 'icomoon';
+	font-family: 'frontend-editor-icomoon';
 	src:url('fonts/icomoon.eot?-9sd76s');
 	src:url('fonts/icomoon.eot?#iefix-9sd76s') format('embedded-opentype'),
 		url('fonts/icomoon.woff?-9sd76s') format('woff'),
@@ -10,7 +10,7 @@
 }
 
 [class^="frontend-editor-icon-"], [class*=" frontend-editor-icon-"] {
-	font-family: 'icomoon';
+	font-family: 'frontend-editor-icomoon';
 	speak: none;
 	font-style: normal;
 	font-weight: normal;
