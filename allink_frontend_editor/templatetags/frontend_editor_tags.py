@@ -5,7 +5,7 @@ register = template.Library()
 
 
 @register.simple_tag(takes_context=True)
-def template_snippet(context, identifier, page, editing_type='lightbox'):
+def template_snippet(context, identifier, page, editing_type='inline'):
     content = page._snippets.get(identifier, '')
     print content
     if not context['request'].user.is_staff:
