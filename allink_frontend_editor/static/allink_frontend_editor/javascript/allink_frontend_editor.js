@@ -143,8 +143,9 @@
             var stripped_tring = $inline_edit.html();
             if(!$inline_edit.hasClass('tinymce'))
                 stripped_tring = this.stripTag($inline_edit.html());
+            stripped_tring = stripped_tring.replace(/&/g, escape('&')).replace(/;/g, escape(';'));
             var identifier = $inline_edit.attr('data-identifier');
-            var inline_text_list = "text=" + escape(stripped_tring) + '&' +
+            var inline_text_list = "text=" + stripped_tring + '&' +
                                    "csrfmiddlewaretoken=" + getCookie('csrftoken');
 
             $.ajax({
