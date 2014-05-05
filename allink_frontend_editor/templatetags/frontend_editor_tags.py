@@ -6,11 +6,13 @@ register = template.Library()
 
 
 @register.simple_tag(takes_context=True)
-def template_snippet(context, identifier, page, editing_type='inline', raw=False):
+def template_snippet(context, identifier, page, editing_type='inline'):
     content = page._snippets.get(identifier, '')
+    if content == '':
+        content = identifier
+    if editing_type in ('raw', 'editor'):
+        content = mark_safe(content)
     if not context['request'].user.is_staff:
-        if raw:
-            return content.replace('&amp;', '&').replace('&lt;', '<').replace('&gt;', '>')
         return content
     return '<span class="frontend-editor-edit %(editing_type)s" data-identifier=%(identifier)s><a class="frontend-editor-btn" href="#"><span class="frontend-editor-edit-icon"></span></a><span class="frontend-editor-content">%(content)s</span></span>' % {
         'identifier': identifier,

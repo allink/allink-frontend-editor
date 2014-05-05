@@ -224,4 +224,40 @@
             }
         }
     }
+    .frontend-editor-textarea-raw {
+        width: 200px;
+        height: 100px;
+    }
+
+    .frontend-editor-actions {
+        a {
+             -webkit-appearance: none;
+            font-family: @font-family;
+            font-weight: bold;
+            font-size: 14px;
+            color: black;
+            background: @lighter-color;
+            border: none;
+            border-radius: 4px;
+            padding: 0 8px;
+            height: 40px;
+            line-height: 40px;
+            cursor: pointer;
+            display: inline-block;
+            text-transform: none;
+            position: relative;
+            text-decoration: none;
+            box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            &:hover {
+                background-color: fade(@lighter-color, 70%);
+            }
+            &:focus {
+                outline: none;
+            }
+            & + a {
+                margin-left: 5px;
+            }
+        }        
+    }
 }

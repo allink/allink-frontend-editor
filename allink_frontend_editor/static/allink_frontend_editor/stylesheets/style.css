@@ -208,3 +208,36 @@
   padding: 20px;
   border-radius: 10px;
 }
+#frontend-editor-lightbox .frontend-editor-textarea-raw {
+  width: 200px;
+  height: 100px;
+}
+#frontend-editor-lightbox .frontend-editor-actions a {
+  -webkit-appearance: none;
+  font-family: Helvetica;
+  font-weight: bold;
+  font-size: 14px;
+  color: black;
+  background: #4affc6;
+  border: none;
+  border-radius: 4px;
+  padding: 0 8px;
+  height: 40px;
+  line-height: 40px;
+  cursor: pointer;
+  display: inline-block;
+  text-transform: none;
+  position: relative;
+  text-decoration: none;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+#frontend-editor-lightbox .frontend-editor-actions a:hover {
+  background-color: rgba(74, 255, 198, 0.7);
+}
+#frontend-editor-lightbox .frontend-editor-actions a:focus {
+  outline: none;
+}
+#frontend-editor-lightbox .frontend-editor-actions a + a {
+  margin-left: 5px;
+}

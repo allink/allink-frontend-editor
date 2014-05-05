@@ -12,9 +12,13 @@
         initDom: function() {
             this.$panel = $('#frontend-editor-panel');
             
+            this.raw_edit = $('.frontend-editor-edit.raw');
+            this.raw_edit_btn = this.raw_edit.find('.frontend-editor-btn');
+
             this.inline_edit = $('.frontend-editor-edit.inline');
             this.inline_edit_content = this.inline_edit.find('.frontend-editor-content');
             this.inline_edit_btn = this.inline_edit.find('.frontend-editor-btn');
+
             this.richtext_edit = $('.frontend-editor-edit.lightbox');
 
             this.open_panel_btn = this.$panel.find('.frontend-editor-open-panel-btn');
@@ -86,6 +90,12 @@
                 }
             });
 
+            this.raw_edit.click(function(event) {
+                event.preventDefault();
+                self.active_identifier = $(this).attr('data-identifier');
+                self.openRawtextInLightbox($(this).find('.frontend-editor-content'), self.active_identifier);
+            });
+
             this.open_panel_btn.click(function(event) {
                 event.preventDefault();
                 var $this = $(this);
@@ -102,6 +112,8 @@
             });
         },
         startEditing: function() {
+            this.raw_edit.addClass('marked-editable');
+
             this.inline_edit.addClass('marked-editable');
             this.inline_edit_content.attr('contenteditable', 'true');
             this.richtext_edit.addClass('marked-editable');
@@ -143,9 +155,9 @@
             var stripped_tring = $inline_edit.html();
             if(!$inline_edit.hasClass('tinymce'))
                 stripped_tring = this.stripTag($inline_edit.html());
-            stripped_tring = stripped_tring.replace(/&/g, escape('&')).replace(/;/g, escape(';'));
+            // stripped_tring = stripped_tring.replace(/&/g, escape('&')).replace(/;/g, escape(';'));
             var identifier = $inline_edit.attr('data-identifier');
-            var inline_text_list = "text=" + stripped_tring + '&' +
+            var inline_text_list = "text=" + encodeURIComponent(stripped_tring) + '&' +
                                    "csrfmiddlewaretoken=" + getCookie('csrftoken');
 
             $.ajax({
@@ -206,6 +218,36 @@
                 }
             });
 
+        },
+        openRawtextInLightbox: function($content, identifier) {
+            var content = this.lightbox_container.find('.content');
+            content.html('<textarea class="frontend-editor-textarea-raw">' + $content.html() + '</textarea>');
+            content.append('<div class="frontend-editor-actions"><a href="#" id="frontend-editor-save-raw">save</a><a href="#" id="frontend-editor-cancel">cancel</a></div>');
+            this.lightbox_container.show();
+
+            var self = this;
+
+
+            // lightbox save
+            this.lightbox_container.find('#frontend-editor-save-raw').click(function(event) {
+                event.preventDefault();
+                data = {
+                    text: self.lightbox_container.find('textarea').val()
+                };
+
+                $content.html(data.text);
+
+                $.post(window.allink_frontend_editor_page_url + identifier + '/', data,
+                    function(result) {
+                        self.showQuickInfo(result);
+                    });
+                self.cancelLightBox();
+            });
+
+            this.lightbox_container.find('#frontend-editor-cancel').click(function(event) {
+                event.preventDefault();
+                self.cancelLightBox();
+            });
         },
         cancelLightBox: function() {
             this.lightbox_container.hide();
