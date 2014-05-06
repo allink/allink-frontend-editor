@@ -6,6 +6,7 @@
     var FrontendEditor = function() {
         this.initDom();
         this.initActions();
+        this.modified_inlines = [];
     };
 
     FrontendEditor.prototype = {
@@ -53,26 +54,11 @@
                 if($content.find('.frontend-editing-placeholder').length)
                     $content.html('');
                 self.selectedContent = $this.html();
-            }).focusout(function() {
-                // var $this = $(this);
 
-                // var $button = $this.find('.frontend-editor-btn');
-                // $button.removeClass('edit');
-
-                // // selected content stayed the same, do not save
-                // if(self.selectedContent == $this.html())
-                //     return;
-
-                // // if its not richtext, then call striptags
-                // if(!$this.hasClass('tinymce'))
-                //     $this.find('.frontend-editor-content').html(self.stripTag($this.html()));
-
-                // // save data
-                // self.saveData($this);
-
-                // self.selectedContent = null;
+                self.modified_inlines.push(this);
             });
 
+            // click on inline btn
             this.inline_edit_btn.click(function(event) {
                 event.preventDefault();
                 var $this = $(this);
@@ -88,6 +74,8 @@
                     $this.removeClass('edit');
                     self.saveData($this.parent());
                 }
+
+                self.modified_inlines.push($(this).parent());
             });
 
             this.raw_edit.click(function(event) {
@@ -188,6 +176,7 @@
         stripTag: function(text) {
             return text.replace(/(?!<br>)(<([^>]+)>)/ig,"");
         },
+        // open lightbox and initialize tinymce
         openRichtextInLightbox: function(identifier) {
             var self = this;
             $.ajax({
@@ -219,6 +208,7 @@
             });
 
         },
+        // open lightbox with a textarea for raw usage
         openRawtextInLightbox: function($content, identifier) {
             var content = this.lightbox_container.find('.content');
             content.html('<textarea class="frontend-editor-textarea-raw">' + $content.html() + '</textarea>');
@@ -226,7 +216,6 @@
             this.lightbox_container.show();
 
             var self = this;
-
 
             // lightbox save
             this.lightbox_container.find('#frontend-editor-save-raw').click(function(event) {
@@ -255,9 +244,10 @@
         saveAll: function() {
             var self = this;
             this.inline_edit_btn.removeClass('edit');
-            this.inline_edit.each(function(key, value) {
+            $(this.modified_inlines).each(function(key, value) {
                 self.saveData($(value));
             });
+            this.modified_inlines = [];
         }
     };
 
