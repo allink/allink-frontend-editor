@@ -12,26 +12,14 @@
         paste_word_valid_elements: "",
         valid_styles: {
             
-        },
-        image_list: [
-            {% for mediafile in mediafiles %}
-                {title: '{{ mediafile }}', value: '{{ mediafile.get_absolute_url }}'}{% if not forloop.last %},{% endif %}
-            {% endfor %}
-        ],
-        image_list: [
-            {% for mediafile in mediafiles %}
-                {title: '{{ mediafile }}', value: '{{ mediafile.get_absolute_url }}'}{% if not forloop.last %},{% endif %}
-            {% endfor %}
-        ]
+        }
      };
 
      window.tinymce_inline_config = {
-        selector: "span.tinymce.inline",
+        selector: ".inline .frontend-editor-content",
         inline: true,
         plugins: "link",
-        valid_elements: "h3",
-        toolbar: "formatselect, link, unlink",
-        block_formats: "Paragraph=p;Header 3=h3",
+        toolbar: "link, unlink",
         menubar: false
     };
 </script>

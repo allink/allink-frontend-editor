@@ -72,7 +72,9 @@
                 else {
                     $(window).focus();
                     $this.removeClass('edit');
-                    self.saveData($this.parent());
+                    self.saveData($this.parent(), function() {
+                        self.hideQuickInfo();
+                    });
                 }
 
                 self.modified_inlines.push($(this).parent());
@@ -103,7 +105,7 @@
             this.raw_edit.addClass('marked-editable');
 
             this.inline_edit.addClass('marked-editable');
-            this.inline_edit_content.attr('contenteditable', 'true');
+            // this.inline_edit_content.attr('contenteditable', 'true');
             this.richtext_edit.addClass('marked-editable');
 
             this.edit_stop_btn.show();
@@ -127,22 +129,23 @@
             });
         },
         stopEditing: function() {
+            this.raw_edit.removeClass('marked-editable');
             this.inline_edit.removeClass('marked-editable');
-            this.inline_edit_content.attr('contenteditable', 'false');
+            // this.inline_edit_content.attr('contenteditable', 'false');
             this.richtext_edit.removeClass('marked-editable');
 
             this.edit_stop_btn.hide();
             this.edit_start_btn.show();
 
-            tinymce.remove('span.tinymce.inline');
+            tinymce.remove('.inline .frontend-editor-content');
 
             this.richtext_edit.unbind();
         },
         // save inline data
-        saveData: function($inline_edit) {
-            var stripped_tring = $inline_edit.html();
-            if(!$inline_edit.hasClass('tinymce'))
-                stripped_tring = this.stripTag($inline_edit.html());
+        saveData: function($inline_edit, success_handler) {
+            var stripped_tring = $inline_edit.find('.frontend-editor-content').html();
+            // if(!$inline_edit.hasClass('tinymce'))
+            //     stripped_tring = this.stripTag($inline_edit.html());
             // stripped_tring = stripped_tring.replace(/&/g, escape('&')).replace(/;/g, escape(';'));
             var identifier = $inline_edit.attr('data-identifier');
             var inline_text_list = "text=" + encodeURIComponent(stripped_tring) + '&' +
@@ -151,7 +154,8 @@
             $.ajax({
                 url: window.allink_frontend_editor_page_url + identifier + '/',
                 method: 'POST',
-                data: inline_text_list
+                data: inline_text_list,
+                success: success_handler
             });
             this.showQuickInfo();
         },
@@ -166,9 +170,11 @@
             // this.quick_info_content.html(text);
                 
             this.save_progress_view.fadeIn();
+        },
+        hideQuickInfo: function() {
             setTimeout($.proxy(function() {
                 this.save_progress_view.fadeOut();
-            }, this), 1500);
+            }, this), 1000);
         },
         showUpdatedWarning: function() {
             this.updated_warning.show();
@@ -244,10 +250,19 @@
         saveAll: function() {
             var self = this;
             this.inline_edit_btn.removeClass('edit');
+            saved_num = this.modified_inlines.length;
+            var success_handler = function() {
+                saved_num--;
+                if(!saved_num)
+                    self.saveDone();
+            };
             $(this.modified_inlines).each(function(key, value) {
-                self.saveData($(value));
+                self.saveData($(value), success_handler);
             });
             this.modified_inlines = [];
+        },
+        saveDone: function() {
+            this.hideQuickInfo();
         }
     };
 

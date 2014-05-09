@@ -36,7 +36,7 @@
         box-shadow: 0 0 8px rgba(0,0,0,.5);
         text-decoration: none;
         &.edit {
-            z-index: 10000;
+            z-index: 9999999;
             .frontend-editor-edit-icon:before {
                 content: "\e603";
             }
@@ -189,6 +189,8 @@
     top: 15px;
     right: 0;
     position: fixed;
+    font-family: @font-family;
+    font-weight: bold;
 }
 
 #updated-warning {
@@ -225,8 +227,8 @@
         }
     }
     .frontend-editor-textarea-raw {
-        width: 200px;
-        height: 100px;
+        width: 300px;
+        height: 150px;
     }
 
     .frontend-editor-actions {
@@ -236,7 +238,7 @@
             font-weight: bold;
             font-size: 14px;
             color: black;
-            background: @lighter-color;
+            background: #EEE;
             border: none;
             border-radius: 4px;
             padding: 0 8px;
@@ -250,7 +252,7 @@
             box-sizing: border-box;
             -webkit-box-sizing: border-box;
             &:hover {
-                background-color: fade(@lighter-color, 70%);
+                background-color: fade(#EEE, 70%);
             }
             &:focus {
                 outline: none;

@@ -23,7 +23,7 @@
   text-decoration: none;
 }
 .marked-editable .frontend-editor-btn.edit {
-  z-index: 10000;
+  z-index: 9999999;
 }
 .marked-editable .frontend-editor-btn.edit .frontend-editor-edit-icon:before {
   content: "\e603";
@@ -175,6 +175,8 @@
   top: 15px;
   right: 0;
   position: fixed;
+  font-family: Helvetica;
+  font-weight: bold;
 }
 #updated-warning {
   background: #ffff00;
@@ -209,8 +211,8 @@
   border-radius: 10px;
 }
 #frontend-editor-lightbox .frontend-editor-textarea-raw {
-  width: 200px;
-  height: 100px;
+  width: 300px;
+  height: 150px;
 }
 #frontend-editor-lightbox .frontend-editor-actions a {
   -webkit-appearance: none;
@@ -218,7 +220,7 @@
   font-weight: bold;
   font-size: 14px;
   color: black;
-  background: #4affc6;
+  background: #EEE;
   border: none;
   border-radius: 4px;
   padding: 0 8px;
@@ -233,7 +235,7 @@
   -webkit-box-sizing: border-box;
 }
 #frontend-editor-lightbox .frontend-editor-actions a:hover {
-  background-color: rgba(74, 255, 198, 0.7);
+  background-color: rgba(238, 238, 238, 0.7);
 }
 #frontend-editor-lightbox .frontend-editor-actions a:focus {
   outline: none;
