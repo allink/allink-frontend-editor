@@ -73,17 +73,11 @@
                     $(window).focus();
                     $this.removeClass('edit');
                     self.saveData($this.parent(), function() {
-                        self.hideQuickInfo();
+                        self.saveDone();
                     });
                 }
 
                 self.modified_inlines.push($(this).parent());
-            });
-
-            this.raw_edit.click(function(event) {
-                event.preventDefault();
-                self.active_identifier = $(this).attr('data-identifier');
-                self.openRawtextInLightbox($(this).find('.frontend-editor-content'), self.active_identifier);
             });
 
             this.open_panel_btn.click(function(event) {
@@ -127,6 +121,12 @@
                 self.active_identifier = $(this).attr('data-identifier');
                 self.openRichtextInLightbox(self.active_identifier);
             });
+
+            this.raw_edit.click(function(event) {
+                event.preventDefault();
+                self.active_identifier = $(this).attr('data-identifier');
+                self.openRawtextInLightbox($(this).find('.frontend-editor-content'), self.active_identifier);
+            });
         },
         stopEditing: function() {
             this.raw_edit.removeClass('marked-editable');
@@ -140,6 +140,7 @@
             tinymce.remove('.inline .frontend-editor-content');
 
             this.richtext_edit.unbind();
+            this.raw_edit.unbind();
         },
         // save inline data
         saveData: function($inline_edit, success_handler) {

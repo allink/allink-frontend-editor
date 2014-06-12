@@ -1,16 +1,10 @@
-.marked-editable {
-  position: relative;
-  cursor: pointer;
-  word-wrap: initial;
+.text-reset {
+  letter-spacing: 0;
+  font-family: Helvetica;
+  color: black;
+  font-size: 14px;
 }
-.marked-editable:focus {
-  cursor: text;
-  outline: none;
-}
-.marked-editable .frontend-editor-btn {
-  position: absolute;
-  left: -34px;
-  top: -7px;
+.frontend-editor-edit-btn {
   background-color: #28d59e;
   background-position: 4px 4px;
   cursor: pointer;
@@ -21,6 +15,48 @@
   -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
   text-decoration: none;
+  letter-spacing: 0;
+  font-family: Helvetica;
+  color: black;
+  font-size: 14px;
+  font-weight: bold;
+}
+.frontend-editor-edit-btn:hover {
+  text-decoration: none;
+  background: rgba(40, 213, 158, 0.7);
+}
+.marked-editable {
+  position: relative;
+  cursor: pointer;
+  word-wrap: initial;
+}
+.marked-editable:focus {
+  cursor: text;
+  outline: none;
+}
+.marked-editable .frontend-editor-btn {
+  background-color: #28d59e;
+  cursor: pointer;
+  line-height: 1em;
+  border-radius: 4px;
+  -moz-box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+  text-decoration: none;
+  letter-spacing: 0;
+  font-family: Helvetica;
+  color: black;
+  font-size: 14px;
+  font-weight: bold;
+  position: absolute;
+  left: -34px;
+  top: -7px;
+  background-position: 4px 4px;
+  padding: 4px 6px;
+}
+.marked-editable .frontend-editor-btn:hover {
+  text-decoration: none;
+  background: rgba(40, 213, 158, 0.7);
 }
 .marked-editable .frontend-editor-btn.edit {
   z-index: 9999999;
@@ -73,6 +109,7 @@
   width: 200px;
   height: 60px;
   overflow: hidden;
+  z-index: 9999999;
   -webkit-transition: height 500ms ease, right 500ms ease;
   -moz-transition: height 500ms ease, right 500ms ease;
   -ms-transition: height 500ms ease, right 500ms ease;
@@ -111,11 +148,12 @@
   margin-top: 10px;
 }
 #frontend-editor-panel .btn {
-  -webkit-appearance: none;
+  letter-spacing: 0;
   font-family: Helvetica;
-  font-weight: bold;
-  font-size: 14px;
   color: black;
+  font-size: 14px;
+  -webkit-appearance: none;
+  font-weight: bold;
   width: 100%;
   background: #4affc6;
   border: none;
@@ -177,6 +215,7 @@
   position: fixed;
   font-family: Helvetica;
   font-weight: bold;
+  z-index: 9999999;
 }
 #updated-warning {
   background: #ffff00;
@@ -193,6 +232,7 @@
   left: 0;
   position: fixed;
   background: rgba(0, 0, 0, 0.5);
+  z-index: 9999999;
 }
 #frontend-editor-lightbox > .wrapper {
   height: 100%;
@@ -204,6 +244,8 @@
   display: table-cell;
   font-size: 100%;
   vertical-align: middle;
+  background-color: transparent;
+  padding: 0;
 }
 #frontend-editor-lightbox > .wrapper > .inner > .content {
   background-color: white;
@@ -211,15 +253,17 @@
   border-radius: 10px;
 }
 #frontend-editor-lightbox .frontend-editor-textarea-raw {
-  width: 300px;
-  height: 150px;
+  width: 450px;
+  height: 200px;
+  margin-bottom: 10px;
 }
 #frontend-editor-lightbox .frontend-editor-actions a {
-  -webkit-appearance: none;
+  letter-spacing: 0;
   font-family: Helvetica;
-  font-weight: bold;
-  font-size: 14px;
   color: black;
+  font-size: 14px;
+  -webkit-appearance: none;
+  font-weight: bold;
   background: #EEE;
   border: none;
   border-radius: 4px;
