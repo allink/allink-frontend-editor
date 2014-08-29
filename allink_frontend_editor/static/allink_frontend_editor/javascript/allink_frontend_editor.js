@@ -140,17 +140,20 @@
         },
         // save inline data
         saveData: function($inline_edit) {
-            var stripped_tring = $inline_edit.html();
+            var stripped_string = $inline_edit.html();
             if(!$inline_edit.hasClass('tinymce'))
-                stripped_tring = this.stripTag($inline_edit.html());
+                stripped_string = this.stripTag($inline_edit.html());
             var identifier = $inline_edit.attr('data-identifier');
-            var inline_text_list = "text=" + escape(stripped_tring) + '&' +
+            var inline_text_list = "text=" + stripped_string + '&' +
                                    "csrfmiddlewaretoken=" + getCookie('csrftoken');
-
+            var data = {
+                text: stripped_string,
+                csrfmiddlewaretoken: getCookie('csrftoken')
+            }
             $.ajax({
                 url: window.allink_frontend_editor_page_url + identifier + '/',
                 method: 'POST',
-                data: inline_text_list
+                data: data
             });
             this.showQuickInfo();
         },
